@@ -56,7 +56,8 @@ module.exports = {
   // In production, we only want to load the polyfills and the app code.
   entry: [
     require.resolve('./polyfills'),
-    paths.appIndexJs
+    paths.appIndexJs,
+    'bootstrap/dist/css/bootstrap.min.css'
   ],
   output: {
     // The build folder.
@@ -85,7 +86,11 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web'
-    }
+    },
+    modulesDirectories: [
+      'src',
+      'node_modules'
+    ],
   },
   
   module: {
