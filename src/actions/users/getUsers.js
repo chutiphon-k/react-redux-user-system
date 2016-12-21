@@ -3,7 +3,7 @@ import { CALL_API } from 'redux-api-middleware'
 
 export default () => dispatch => dispatch({
 	[CALL_API]: {
-		endpoint: `https://twisser-5cc2d.firebaseio.com/tweet.json`,
+		endpoint: `${process.env.HOST}/tweet.json`,
 		headers: {
 		  'Accept': 'application/json',
 		  'Content-Type': 'application/json'

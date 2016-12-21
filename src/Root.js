@@ -7,7 +7,7 @@ import routes from 'routes'
 const store = configureStore(browserHistory)
 
 export default () => (
-	<Provider store={store}>
+	<Provider store={store} key='provider'>
 		{routes(store, browserHistory)}
 	</Provider>
 )

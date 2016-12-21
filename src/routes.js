@@ -4,16 +4,18 @@ import {
 	Route,
 	IndexRoute
 } from 'react-router'
-// import { syncHistoryWithStore } from 'react-router-redux'
+import { syncHistoryWithStore } from 'react-router-redux'
 import {
 	App,
-	Home
+	Home,
+	About
 } from 'containers'
 
 export default (store, history) => (
-	<Router history={history}>
+	<Router history={syncHistoryWithStore(history, store)}>
 		<Route path='/' component={App}>
 			<IndexRoute component={Home} />
+			<Route path='about' component={About} />
 		</Route>
 	</Router>
 )
