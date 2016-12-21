@@ -134,6 +134,21 @@ module.exports = {
         loader: 'babel',
         query: {
           plugins: ["react-hot-loader/babel"],
+          "env": {
+            "development": {
+              "plugins": [
+                ["react-transform", {
+                  "transforms": [{
+                    "transform": "react-transform-hmr",
+                    "imports": ["react"],
+                    "locals": ["module"]
+                  }]
+                }],
+                "transform-runtime"
+              ]
+            },
+            "production": {}
+          },
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.
