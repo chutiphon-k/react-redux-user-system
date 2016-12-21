@@ -1,8 +1,7 @@
-import React from 'react'
 import { render } from 'react-dom'
-import { App } from 'containers'
+import routes from 'routes'
 
 render(
-  <App />,
+  routes(),
   document.getElementById('root')
 )
