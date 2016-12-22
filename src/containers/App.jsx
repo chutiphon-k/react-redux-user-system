@@ -1,14 +1,25 @@
 import React, { Component } from 'react'
+import {
+	Grid,
+	Row,
+	Col
+} from 'react-bootstrap'
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 
 export default class App extends Component {
 	render(){
 		return (
 			<div>
-				<h1>App</h1>
-				<hr/>
-				{this.props.children}
-				<hr />
-				<h1>Footer</h1>
+				<Header />
+				<Grid>
+				<Row className="show-grid">
+					<Col md={1} />
+					<Col md={10}>{this.props.children}</Col>
+					<Col md={1} />
+				</Row>
+				</Grid>
+				<Footer />
 			</div>
 		)
 	}
