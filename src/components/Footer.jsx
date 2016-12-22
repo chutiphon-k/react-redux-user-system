@@ -5,13 +5,23 @@ import {
 	NavItem
 } from 'react-bootstrap'
 import 'components/Footer.css'
+import {
+	logoReact,
+	logoRedux,
+	logoReactBoot,
+	logoWebpack
+} from 'assets/images'
+
+const listLogo = [logoReact, logoRedux, logoReactBoot, logoWebpack]
 
 const Footer = () => {
 	return (
 		<div className="footer">
 			<strong>Development By</strong>
 			<br />
-			<img className="logoDev" src="http://donejs.com/static/img/react-logo.png" />	
+			{	
+				listLogo.map(logo => <img className="logoDev" src={logo} key={logo} />)				
+			}
 		</div>
 	)
 }

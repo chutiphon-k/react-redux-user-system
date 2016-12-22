@@ -1,7 +1,5 @@
-import { 
-	getUsers 
-} from 'actions/users'
+import * as users from 'actions/users'
 
 export default {
-	getUsers
+	...users
 }

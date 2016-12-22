@@ -21,7 +21,7 @@ function getClientEnvironment(publicUrl) {
       // This should only be used as an escape hatch. Normally you would put
       // images into the `src` and `import` them in code to get their paths.
       'PUBLIC_URL': JSON.stringify(publicUrl),
-      'HOST': (process.env.NODE_ENV === 'production') ? '"https://twisser-5cc2d.firebaseio.com"' : '"https://twisser-5cc2d.firebaseio.com"'
+      'HOST': (process.env.NODE_ENV === 'production') ? '"https://twisser-5cc2d.firebaseio.com"' : '"http://localhost:9090"'
     });
   return {'process.env': processEnv};
 }
