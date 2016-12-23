@@ -1,5 +1,4 @@
 import { CALL_API } from 'redux-api-middleware'
-// import { push } from 'react-router-redux'
 
 export default () => dispatch => dispatch({
 	[CALL_API]: {

@@ -3,32 +3,33 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router' 
 import { 
 	Table,
-	Button,
-	Grid,
-	Row,
-	Col
+	Button
 } from 'react-bootstrap'
 import actions from 'actions'
 
-const { getUsers } = actions
+const { getUsers, deleteUser } = actions
 
-class Home extends Component {
+class ListUser extends Component {
 
 	componentWillMount(){
 		this.props.getUsers()
+	}
+
+	shouldComponentUpdate(nextProps, nextState){
+		return nextProps.users !== this.props.users
 	}
 
 	render(){
 		return (
 			<div>
 				<div className="page-header">
-				  <h1>User List <Button bsStyle="info">Add</Button></h1>
+				  <h1>List User <Link to='user/add'><Button bsStyle="info">Add</Button></Link></h1>
 				</div>
 				<br />
 				<Table striped bordered condensed hover>
 					<thead>
 						<tr>
-							<th>#</th>
+							<th>User ID</th>
 							<th>Name</th>
 							<th>Description</th>
 							<th>Option</th>
@@ -36,17 +37,17 @@ class Home extends Component {
 					</thead>
 				<tbody>
 					{
-						this.props.users.map((user, index) => {
-							const { name, description } = user
+						this.props.users.map((user) => {
+							const { id, name, description } = user
 							return (
 								<tr key={name}>
-									<td>{index+1}</td>
+									<td>{id}</td>
 									<td>{name}</td>
 									<td>{description}</td>
 									<td>
-										<Button bsStyle="success">Edit</Button>
+										<Link to={`user/${id}/edit`}><Button bsStyle="success">Edit</Button></Link>
 										{' '}
-										<Button bsStyle="danger">Delete</Button>
+										<Button bsStyle="danger" onClick={() => this.props.deleteUser(id)}>Delete</Button>
 									</td>
 								</tr>
 							)
@@ -66,12 +67,15 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 	getUsers() {
 	    dispatch(getUsers())
+	},
+	deleteUser(id) {
+		dispatch(deleteUser(id))
 	}
 })
 
-Home = connect(
+ListUser = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Home)
+)(ListUser)
 
-export default Home
+export default ListUser
