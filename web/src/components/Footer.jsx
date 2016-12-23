@@ -16,7 +16,7 @@ const listLogo = [logoReact, logoRedux, logoReactBoot, logoWebpack]
 
 const Footer = () => {
 	return (
-		<div className="footer">
+		<div className='footer'>
 			<strong>Development By</strong>
 			<br />
 			{	
