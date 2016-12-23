@@ -12,7 +12,7 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-	let data
+	let data, index
 	switch(action.type) {
 		case 'LOAD_USER_REQUEST':
 			return {
@@ -54,8 +54,19 @@ export default (state = initialState, action) => {
 			}			
 		case 'DELETE_USER_SUCCESS':
 			data = [...state.get.data]
-			let index = data.findIndex(value => value.id == action.payload.id)
+			index = data.findIndex(value => value.id == action.payload.id)
 			data.splice(index,1)
+			return {
+				...state,
+				get: {
+					...state.get,
+					data
+				}
+			}
+		case 'PATCH_USER_SUCCESS':
+			data = [...state.get.data]
+			let index = data.findIndex(value => value.id == action.payload.id)
+			data[index] = action.payload
 			return {
 				...state,
 				get: {

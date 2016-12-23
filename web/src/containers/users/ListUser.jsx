@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router' 
-import { 
-	Table,
-	Button
-} from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import actions from 'actions'
+import { TableListUser } from 'components/users'
 
 const { getUsers, deleteUser } = actions
 
@@ -26,35 +24,7 @@ class ListUser extends Component {
 				  <h1>List User <Link to='user/add'><Button bsStyle="info">Add</Button></Link></h1>
 				</div>
 				<br />
-				<Table striped bordered condensed hover>
-					<thead>
-						<tr>
-							<th>User ID</th>
-							<th>Name</th>
-							<th>Description</th>
-							<th>Option</th>
-						</tr>
-					</thead>
-				<tbody>
-					{
-						this.props.users.map((user) => {
-							const { id, name, description } = user
-							return (
-								<tr key={name}>
-									<td>{id}</td>
-									<td>{name}</td>
-									<td>{description}</td>
-									<td>
-										<Link to={`user/${id}/edit`}><Button bsStyle="success">Edit</Button></Link>
-										{' '}
-										<Button bsStyle="danger" onClick={() => this.props.deleteUser(id)}>Delete</Button>
-									</td>
-								</tr>
-							)
-						})
-					}
-				</tbody>
-				</Table>
+				<TableListUser users={this.props.users} deleteUser={this.props.deleteUser} />
 			</div>
 		)
 	}

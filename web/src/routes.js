@@ -7,7 +7,6 @@ import {
 } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import App from 'containers/App'
-import About from 'containers/About'
 import {
 	ListUser,
 	AddUser,
@@ -18,9 +17,8 @@ export default (store, history) => (
 	<Router history={syncHistoryWithStore(history, store)}>
 		<Route path='/' component={App}>
 			<IndexRoute component={ListUser} />
-			<Route path='user/add' component={AddUser}/>
-			<Route path='user/:user_id/edit' component={EditUser}/>
-			<Route path='about' component={About} />
+			<Route path='user/add' component={AddUser} />
+			<Route path='user/:user_id/edit' component={EditUser} />
 			<Redirect from='*' to='/' />
 		</Route>
 	</Router>
