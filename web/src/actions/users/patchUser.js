@@ -3,7 +3,7 @@ import { push } from 'react-router-redux'
 
 export default (id, data) => dispatch => dispatch({
 	[CALL_API]: {
-		endpoint: `${process.env.HOST}/users/${id}`,
+		endpoint: `${process.env.API_SERVER}/users/${id}`,
 		headers: {
 		  'Accept': 'application/json',
 		  'Content-Type': 'application/json'
