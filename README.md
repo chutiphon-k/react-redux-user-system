@@ -1,6 +1,6 @@
-# React Redux ToDoList
+# React Redux User System
 
-> A ReactJs project
+> A React project for user system
 
 ## Screenshot
 <p align="center">
@@ -42,10 +42,10 @@ npm run start
 
 ``` bash
 # setup docker container
-docker build -t react-redux-todolist .
+docker build -t react-redux-user-system .
 
 #start docker container
-docker run -d -p 8080:80 react-redux-todolist
+docker run -d -p 8080:80 react-redux-user-system
 
 #stop docker container
 docker ps --all
